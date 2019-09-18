@@ -15,14 +15,26 @@ import parser.Parser;
 
 public class ParserController {
 
-    final static String pathLog = "C:\\Users\\Leo\\Documents\\Projetos\\parser\\log\\games.log";
+    final static String pathLog = "/home/developer/Projetos/quake3-parser/log/games.log";
+    private static List<Game> games;
 
-    public static void parser() {
+    public static List<Game> ranking() {
+        System.out.println("RANKING POR GAME");
+
+        games.stream().forEach(game -> {
+            Collections.sort(game.getKills());
+            System.out.println("GAME ID:" + game.getGameId() + " Players Ranking:" + game.getKills());
+        });
+        
+        return games;
+    }
+
+    public static List<Game> parser() {
         String result, playerKill, playerDeath = "";
         Long contGame = 1l;
         List<Player> players = new ArrayList<>();
         List<String> namePlayers = new ArrayList<>();
-        List<Game> games = new ArrayList<>();
+        games = new ArrayList<>();
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(pathLog));
@@ -50,8 +62,6 @@ public class ParserController {
                         linha = br.readLine();
 
                     } while (!linha.contains("ShutdownGame"));
-                    
-                    Collections.sort(players);
 
                     games.add(new Game(contGame, players, totalKills, namePlayers));
 
@@ -62,17 +72,21 @@ public class ParserController {
                 };
 
             }
-            
+
             //IMPRIMINDO O RELATÓRIO FINAL
             games.stream().forEach(game -> {
                 System.out.println("GAME: " + game);
             });
+
+            return games;
 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        return new ArrayList<>();
 
     }
 
@@ -111,4 +125,3 @@ public class ParserController {
     }
 
 }
-

@@ -12,15 +12,7 @@ public class Game {
     public Game(Long gameId, List<Player> playersKill, int totalKills, List<String> players) {
         this.gameId = gameId;
         this.kills = playersKill;
-        this.totalKills = totalKills;
         this.players = players;
-    }
-
-    public int getTotalKills() {
-        return totalKills;
-    }
-
-    public void setTotalKills(int totalKills) {
         this.totalKills = totalKills;
     }
 
@@ -32,8 +24,24 @@ public class Game {
         this.gameId = gameId;
     }
 
-    public void setPlayersKill(List<Player> playersKill) {
-        this.kills = playersKill;
+    public List<Player> getKills() {
+        return kills;
+    }
+
+    public void setKills(List<Player> kills) {
+        this.kills = kills;
+    }
+
+    public int getTotalKills() {
+        return totalKills;
+    }
+
+    public void setTotalKills(int totalKills) {
+        this.totalKills = totalKills;
+    }
+
+    public List<String> getPlayers() {
+        return players;
     }
 
     public void setPlayers(List<String> players) {

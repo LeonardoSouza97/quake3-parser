@@ -36,7 +36,7 @@ public class Player implements Comparable<Player>{
 
     @Override
     public int compareTo(Player t) {
-        return this.kills > t.kills ? this.kills < t.kills ? 0 : 1 : -1;
+        return this.kills < t.kills ? this.kills > t.kills ? 0 : 1 : -1;
     }
 
 }
