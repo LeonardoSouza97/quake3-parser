@@ -1,6 +1,6 @@
 package com.quake.model;
 
-public class Player {
+public class Player implements Comparable<Player>{
 
     private String name;
     private int kills;
@@ -32,6 +32,11 @@ public class Player {
     @Override
     public String toString() {
         return "Player{" + "nome=" + name + ", kills=" + kills + '}';
+    }
+
+    @Override
+    public int compareTo(Player t) {
+        return this.kills > t.kills ? this.kills < t.kills ? 0 : 1 : -1;
     }
 
 }

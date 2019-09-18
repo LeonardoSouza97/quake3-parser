@@ -1,4 +1,4 @@
-package parser;
+package com.quake.controller;
 
 import com.quake.model.Game;
 import com.quake.model.Player;
@@ -7,15 +7,17 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import parser.Parser;
 
-public class parser {
+public class ParserController {
 
     final static String pathLog = "C:\\Users\\Leo\\Documents\\Projetos\\parser\\log\\games.log";
 
-    public static void main(String[] args) {
+    public static void parser() {
         String result, playerKill, playerDeath = "";
         Long contGame = 1l;
         List<Player> players = new ArrayList<>();
@@ -48,6 +50,8 @@ public class parser {
                         linha = br.readLine();
 
                     } while (!linha.contains("ShutdownGame"));
+                    
+                    Collections.sort(players);
 
                     games.add(new Game(contGame, players, totalKills, namePlayers));
 
@@ -58,16 +62,16 @@ public class parser {
                 };
 
             }
-
+            
             //IMPRIMINDO O RELATÓRIO FINAL
             games.stream().forEach(game -> {
                 System.out.println("GAME: " + game);
             });
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(parser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(parser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -107,3 +111,4 @@ public class parser {
     }
 
 }
+
