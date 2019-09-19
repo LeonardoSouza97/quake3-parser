@@ -7,7 +7,7 @@
 
 3) Para utilizar a API execute o arquivo que se encontra no mesmo projeto 'SpringBootApplication' e acesse a rota /games/{id}
 
-Exemplo: localhost:8080/game/1 para acessar as informações do game 1
+    Exemplo: localhost:8080/game/1 para acessar as informações do game 1
 
 :)
 
