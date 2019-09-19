@@ -11,11 +11,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import parser.Parser;
 
 public class ParserController {
 
-    final static String pathLog = "/home/developer/Projetos/quake3-parser/log/games.log";
+    final static String pathLog = "C:\\Users\\Leo\\Documents\\Projetos\\parser\\log\\games.log";
     private static List<Game> games;
 
     public static List<Game> ranking() {
@@ -72,7 +71,6 @@ public class ParserController {
                 };
 
             }
-
             //IMPRIMINDO O RELATÓRIO FINAL
             games.stream().forEach(game -> {
                 System.out.println("GAME: " + game);
@@ -81,9 +79,9 @@ public class ParserController {
             return games;
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ParserController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ParserController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return new ArrayList<>();

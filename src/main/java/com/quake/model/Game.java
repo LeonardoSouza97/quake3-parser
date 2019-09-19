@@ -16,6 +16,9 @@ public class Game {
         this.totalKills = totalKills;
     }
 
+    public Game() {
+    }
+
     public Long getGameId() {
         return gameId;
     }
